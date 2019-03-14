@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+cd $1
+declare -a extensies
+declare -a aantallen
+
+extensies=("$@")
+#Efficientste manier :-)
+ # for extensie in $extensies; do
+# ls -l *.$extensie" | wc -l
+# done
+
+for arg in "$@"; do
+	aantallen+=(0)
+done
+
+for bestand in ./*; do
+	bType="${bestand##*.}"
+
+	INDEX=0
+	for i in ${extensies[@]}; do
+		case $bType in
+			"$i")
+				(( aantallen[INDEX]++ ))
+				;;
+		esac
+		((INDEX++))
+	done
+done
+
+INDEX=0
+for i in ${extensies
+[@]}; do
+	echo "$i" "${aantallen[INDEX]}"
+	((INDEX++))
+done

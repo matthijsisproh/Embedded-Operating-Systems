@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+list="$(find $1 )"
+cd $1
+mkdir  -p Afbeeldingen
+
+for afbeelding in $list; do
+	find . -name "*.jpg" -exec mv -t ./Afbeeldingen/ {} \+
+	find . -name "*.png" -exec mv -t ./Afbeeldingen/ {} \+
+done

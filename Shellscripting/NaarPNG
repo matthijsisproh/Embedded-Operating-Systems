@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+cd $1
+
+filenames=`find . -name "*.jpg"`
+
+for img in $filenames; do
+	convert "$img" -resize 128x128 ${img%.*}.png
+done

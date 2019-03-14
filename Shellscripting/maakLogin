@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cd $1
+
+# Read username
+read -p "What is your name? " username
+
+if $read != [a-z] | [0-9] | [A-Z];
